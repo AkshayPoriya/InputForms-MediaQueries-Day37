@@ -26,3 +26,14 @@ email.addEventListener('input', function () {
         emailError.textContent = "Email-id is Incorrect";
     }
 });
+
+var tel = document.querySelector('#tel');
+var telError = document.querySelector('.tel-error');
+tel.addEventListener('input', function () {
+    let telRegex = RegExp('^[1-9][0-9][ ][1-9][0-9]{9}$');
+    if (telRegex.test(tel.value)) {
+        telError.textContent = "";
+    } else {
+        telError.textContent = "Mobile Number is Incorrect";
+    }
+});
