@@ -15,3 +15,14 @@ text.addEventListener('input', function () {
         textError.textContent = "Name is Incorrect";
     }
 });
+
+var email = document.querySelector('#email');
+var emailError = document.querySelector('.email-error');
+email.addEventListener('input', function () {
+    let emailRegex = RegExp('^[a-zA-Z0-9]+([.+-]{1}[A-Za-z0-9]+)*[@][a-zA-Z0-9]+([.]{1}([a-zA-Z]{2}|[a-zA-Z]{3,})){1,2}$');
+    if (emailRegex.test(email.value)) {
+        emailError.textContent = "";
+    } else {
+        emailError.textContent = "Email-id is Incorrect";
+    }
+});
