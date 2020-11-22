@@ -41,9 +41,12 @@ tel.addEventListener('input', function () {
 var pwd = document.querySelector('#pwd');
 var pwdError = document.querySelector('.pwd-error');
 pwd.addEventListener('input', function () {
-    let pwdRegex = RegExp('^[A-Za-z0-9@#$%_]{8,20}$');
+    let pwdRegex = RegExp('^(?=.*[A-Z])(?=.*[0-9])(?=.*[a-z])(?=.*[@#$%_])(?!.*[@#$%_].*[@#$%_]).{8,20}$');
     let pwdWrong = RegExp('^(?=.*[^A-Za-z0-9@#$%_]).*$');
-    if(pwdWrong.test(pwd.value)){
+    let moreThanOneSpecial = RegExp('^(?=.*[@#$%_].*[@#$%_]).*$');
+    if(moreThanOneSpecial.test(pwd.value)){
+        pwdError.textContent = "More than one special character, enter only one special character";
+    }else if(pwdWrong.test(pwd.value)){
         pwdError.textContent = "Invalid Character Included!"
     }else if (pwdRegex.test(pwd.value)) {
         pwdError.textContent = "";
