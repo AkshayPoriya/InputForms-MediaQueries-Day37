@@ -37,3 +37,17 @@ tel.addEventListener('input', function () {
         telError.textContent = "Mobile Number is Incorrect";
     }
 });
+
+var pwd = document.querySelector('#pwd');
+var pwdError = document.querySelector('.pwd-error');
+pwd.addEventListener('input', function () {
+    let pwdRegex = RegExp('^[A-Za-z0-9@#$%_]{8,20}$');
+    let pwdWrong = RegExp('^(?=.*[^A-Za-z0-9@#$%_]).*$');
+    if(pwdWrong.test(pwd.value)){
+        pwdError.textContent = "Invalid Character Included!"
+    }else if (pwdRegex.test(pwd.value)) {
+        pwdError.textContent = "";
+    } else {
+        pwdError.textContent = "Password is not strong-enough";
+    }
+});
